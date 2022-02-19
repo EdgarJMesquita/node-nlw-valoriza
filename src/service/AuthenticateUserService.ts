@@ -2,7 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../repositories/UsersRepositories";
-
+const key = process.env.key;
 interface IAuthenticateUserService {
   email: string;
   password: string;
@@ -27,7 +27,13 @@ class AuthenticateUserService {
     const payload = {
       email: user.email,
     };
-    const token = sign(payload, "5055fded3f0f7b0dddcd5afc0d09b3f3", {
+
+    if (!key) {
+      console.log("Missing environment variables!");
+      return;
+    }
+
+    const token = sign(payload, key, {
       subject: user.id,
       expiresIn: "1d",
     });
