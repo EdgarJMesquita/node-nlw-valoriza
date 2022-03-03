@@ -1,6 +1,5 @@
 import { getCustomRepository } from "typeorm";
 import { TagRepositories } from "../repositories/TagRepositories";
-import { UsersRepositories } from "../repositories/UsersRepositories";
 
 interface ICreateTagService {
   name: string;

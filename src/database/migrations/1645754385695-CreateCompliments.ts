@@ -79,5 +79,7 @@ export class CreateCompliments1645754385695 implements MigrationInterface {
     ); */
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable("compliments");
+  }
 }

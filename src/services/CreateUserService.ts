@@ -9,7 +9,7 @@ interface IUserRequest {
   admin?: boolean;
 }
 class CreateUserService {
-  async execute({ name, email, password, admin }: IUserRequest) {
+  async execute({ name, email, password, admin = false }: IUserRequest) {
     if (!name) {
       throw new Error("Missing name");
     }
