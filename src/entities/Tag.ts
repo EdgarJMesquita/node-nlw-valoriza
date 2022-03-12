@@ -2,15 +2,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity("tags")
 class Tag {
-  @PrimaryColumn()
-  readonly id: string;
+  @PrimaryGeneratedColumn("increment")
+  readonly id: number;
 
   @Column()
   name: string;
@@ -21,11 +21,11 @@ class Tag {
   @UpdateDateColumn()
   updated_at: Date;
 
-  constructor() {
+  /* constructor() {
     if (!this.id) {
       this.id = uuid();
     }
-  }
+  } */
 }
 
 export { Tag };

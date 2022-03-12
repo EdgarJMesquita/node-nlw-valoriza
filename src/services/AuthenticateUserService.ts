@@ -34,11 +34,19 @@ class AuthenticateUserService {
     }
 
     const token = sign(payload, key, {
-      subject: user.id,
+      subject: String(user.id),
       expiresIn: "1d",
     });
 
-    return token;
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      admin: user.admin,
+      token,
+      created_at: user.created_at,
+      updated_at: user.updated_at,
+    };
   }
 }
 

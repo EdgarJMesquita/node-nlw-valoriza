@@ -8,8 +8,9 @@ export class CreateUsers1645148330135 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "int",
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: "name",
@@ -17,6 +18,10 @@ export class CreateUsers1645148330135 implements MigrationInterface {
           },
           {
             name: "email",
+            type: "varchar",
+          },
+          {
+            name: "password",
             type: "varchar",
           },
           {
